@@ -36,7 +36,7 @@ const Services = () => {
 
   return (
     <>
-      <Box py={4}>
+      <Box py={{ xs: 4, sm: 6, md: 8 }}>
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -53,6 +53,8 @@ const Services = () => {
               '&:hover': {
                 color: 'green',
               },
+              fontSize: { xs: '2rem', sm: '2.75rem', md: '3rem' },
+              px: { xs: 2, sm: 0 }, // padding on smaller screens
             }}
           >
             Our Services
@@ -62,14 +64,18 @@ const Services = () => {
 
       <Box
         sx={{
-          width: '80%',
-          display: 'grid',
-          gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
-          gap: 4,
-          justifyContent: 'center',
-          py: 4,
-          px: 2,
+          maxWidth: 1200,
           margin: '0 auto',
+          display: 'grid',
+          gridTemplateColumns: {
+            xs: '1fr',
+            sm: 'repeat(2, 1fr)',
+            md: 'repeat(2, 1fr)',
+            lg: 'repeat(4, 1fr)',
+          },
+          gap: { xs: 3, sm: 4, md: 5 },
+          px: { xs: 2, sm: 3, md: 0 },
+          py: { xs: 3, sm: 5 },
         }}
       >
         {workItems.map(({ title, Icon, description }, index) => (
@@ -87,7 +93,7 @@ const Services = () => {
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
-                p: 3,
+                p: { xs: 3, sm: 4 },
                 backgroundColor: 'white',
                 color: 'black',
                 boxShadow: 3,
@@ -96,24 +102,38 @@ const Services = () => {
                   boxShadow: 6,
                   backgroundColor: '#f9f9f9',
                 },
+                minHeight: 280, // uniform card height
               }}
             >
               <Icon
                 sx={{
-                  fontSize: 40,
+                  fontSize: { xs: 36, sm: 40, md: 44 },
                   mb: 2,
                   color: 'green',
                   borderRadius: '50%',
                   backgroundColor: '#e0f2f1',
-                  padding: 1,
+                  padding: 1.2,
                 }}
               />
-              <Typography variant="h6" gutterBottom sx={{ textAlign: 'center' }}>
+              <Typography
+                variant="h6"
+                gutterBottom
+                sx={{
+                  textAlign: 'center',
+                  fontSize: { xs: '1.1rem', sm: '1.25rem' },
+                  fontWeight: '600',
+                }}
+              >
                 {title}
               </Typography>
               <Typography
                 variant="body2"
-                sx={{ textAlign: 'center', color: 'gray' }}
+                sx={{
+                  textAlign: 'center',
+                  color: 'gray',
+                  fontSize: { xs: '0.9rem', sm: '1rem' },
+                  lineHeight: 1.4,
+                }}
               >
                 {description}
               </Typography>

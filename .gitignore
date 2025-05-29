@@ -1,5 +1,5 @@
 # Logs
-logs
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -7,18 +7,57 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Dependency directories
+node_modules/
+dist/
+dist-ssr/
+
+# Local environment files
+.env
+.env.local
 *.local
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# OS generated files
 .DS_Store
+Thumbs.db
+
+# Editor directories and files
+.vscode/
+!.vscode/extensions.json
+.idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# Ignore system app data (Windows specific)
+AppData/
+AppData/Local/
+
+# Build artifacts
+out/
+coverage/
+
+# Misc cache folders
+.cache/
+.next/
+.nuxt/
+.storybook/
+
+# Optional lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Ignore specific config or personal files (if any)
+*.iml
+*.bak
+*.tmp
+
+# Ignore compiled files
+*.class
+*.dll
+*.exe
+*.o
+*.so

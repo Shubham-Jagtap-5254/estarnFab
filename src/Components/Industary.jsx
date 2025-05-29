@@ -4,7 +4,6 @@ import BuildIcon from '@mui/icons-material/Build';
 import DescriptionIcon from '@mui/icons-material/Description';
 import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturing';
 import EnergyIcon from '@mui/icons-material/EnergySavingsLeaf';
-
 import { motion } from 'framer-motion';
 
 const industries = [
@@ -34,38 +33,49 @@ const industries = [
   },
 ];
 
-// Framer Motion variants for scroll animation
 const cardVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.6, ease: 'easeOut' } 
+  },
 };
 
 const Services = () => {
   return (
-    <Container maxWidth="lg" sx={{ py: 6 }}>
+    <Container maxWidth="lg" sx={{ py: { xs: 4, md: 6 } }}>
       <Typography
         variant="h4"
         component="h2"
         align="center"
         gutterBottom
-        sx={{ fontWeight: 'bold', color: 'green' }}
+        sx={{ fontWeight: 'bold', color: 'green', mb: { xs: 3, md: 4 } }}
       >
         Industries We Serve
       </Typography>
+      
       <Typography
         variant="body1"
         align="center"
         color="text.secondary"
-        sx={{ mb: 4, maxWidth: 700, mx: 'auto' }}
+        sx={{ mb: { xs: 3, md: 5 }, maxWidth: 800, mx: 'auto' }}
       >
         Neon Solutions supports customers throughout the process, helping them achieve their objectives
         in the steel, paper, and heavy engineering industries. Our expertise and comprehensive
         solutions ensure optimal performance and productivity for our clients.
       </Typography>
 
-      <Grid container spacing={4} justifyContent="center">
-        {industries.slice(0, 3).map(({ title, description, icon }) => (
-          <Grid item key={title} xs={12} sm={6} md={4}>
+      {/* Grid container with spacing */}
+      <Grid container spacing={{ xs: 3, md: 4 }} justifyContent="center">
+        {industries.map(({ title, description, icon }) => (
+          <Grid
+            item
+            key={title}
+            xs={12}   // full width on xs screens (mobile)
+            sm={6}    // half width on small screens (tablets)
+            md={4}    // one-third width on medium+ screens (desktop)
+          >
             <motion.div
               variants={cardVariants}
               initial="hidden"
@@ -74,64 +84,27 @@ const Services = () => {
             >
               <Card
                 sx={{
-                  maxWidth: 345,
                   height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
                   textAlign: 'center',
-                  p: 3,
+                  p: { xs: 2.5, md: 3 },
                   bgcolor: '#f9fafb',
-                  transition: 'box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out',
+                  transition: 'box-shadow 0.3s ease, transform 0.3s ease',
                   '&:hover': {
                     boxShadow: 6,
-                    transform: 'scale(1.05)', // Scale up on hover
+                    transform: 'scale(1.05)',
                   },
                 }}
                 elevation={0}
               >
                 <Box sx={{ mb: 2, color: 'black' }}>{icon}</Box>
-                <Typography variant="h6" component="h3" sx={{ fontWeight: 'bold', mb: 1 }}>
-                  {title}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {description}
-                </Typography>
-              </Card>
-            </motion.div>
-          </Grid>
-        ))}
-      </Grid>
-
-      <Grid container spacing={4} justifyContent="center" sx={{ mt: 6 }}>
-        {industries.slice(3).map(({ title, description, icon }) => (
-          <Grid item key={title} xs={12} sm={6} md={4} sx={{ display: 'flex', justifyContent: 'center' }}>
-            <motion.div
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-            >
-              <Card
-                sx={{
-                  maxWidth: 345,
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  textAlign: 'center',
-                  p: 3,
-                  bgcolor: '#f9fafb',
-                  transition: 'box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out',
-                  '&:hover': {
-                    boxShadow: 6,
-                    transform: 'scale(1.05)', // Scale up on hover
-                  },
-                }}
-                elevation={0}
-              >
-                <Box sx={{ mb: 2, color: 'black' }}>{icon}</Box>
-                <Typography variant="h6" component="h3" sx={{ fontWeight: 'bold', mb: 1 }}>
+                <Typography
+                  variant="h6"
+                  component="h3"
+                  sx={{ fontWeight: 'bold', mb: 1 }}
+                >
                   {title}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">

@@ -23,21 +23,21 @@ const Clients = () => {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 2000, 
+    speed: 4000,
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 0, 
+    autoplaySpeed: 0,
     cssEase: 'linear',
     responsive: [
       {
-        breakpoint: 768,
+        breakpoint: 1024,
         settings: {
           slidesToShow: 2,
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 600,
         settings: {
           slidesToShow: 1,
         },
@@ -52,7 +52,7 @@ const Clients = () => {
         sx={{
           fontWeight: 'bold',
           mb: 2,
-          fontSize: { xs: '28px', md: '34px' },
+          fontSize: { xs: '24px', sm: '28px', md: '34px' },
           transition: 'all 0.3s ease',
           '&:hover': { color: 'green' },
         }}
@@ -63,10 +63,13 @@ const Clients = () => {
       <Typography
         variant="h6"
         sx={{
-          fontWeight: 'bold',
-          fontSize: { xs: '12px', md: '18px' },
+          fontWeight: '500',
+          fontSize: { xs: '13px', sm: '14px', md: '18px' },
           color: 'grey',
           mb: 4,
+          maxWidth: '800px',
+          mx: 'auto',
+          px: { xs: 1, sm: 3 },
         }}
       >
         Neon Solutions is honored to have partnered with leading organizations across various industries. Our dedication to delivering innovative, reliable, and efficient machinery solutions has made us a trusted name in the field.
@@ -75,15 +78,24 @@ const Clients = () => {
       <Box sx={{ maxWidth: 900, mx: 'auto' }}>
         <Slider {...settings}>
           {images.map((img, index) => (
-            <Box key={index} sx={{ px: 1 }}>
-              <img
+            <Box
+              key={index}
+              sx={{
+                px: 1,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <Box
+                component="img"
                 src={img}
                 alt={`Client ${index + 1}`}
-                style={{
-                  width: '200%',
-                  height: '200px',
+                sx={{
+                  width: { xs: '80%', sm: '70%', md: '100%' },
+                  height: { xs: '120px', sm: '150px', md: '200px' },
                   objectFit: 'contain',
-                  borderRadius: 8,
+                  borderRadius: 2,
                 }}
               />
             </Box>

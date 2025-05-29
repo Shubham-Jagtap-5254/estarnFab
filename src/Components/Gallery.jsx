@@ -4,76 +4,122 @@ import poster1 from '../assets/poster1.webp';
 import poster2 from '../assets/poster2.webp';
 import { Box, Button, Typography } from '@mui/material';
 
-const styles = {
-  parent: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(5, 1fr)',
-    gridTemplateRows: 'repeat(5, 1fr)',
-    gap: '8px',
-    marginLeft: '10%',
-    marginRight: '10%',
-  },
-  div1: {
-    gridColumn: 'span 3 / span 3',
-    gridRow: 'span 5 / span 5',
-  },
-  div2: {
-    gridRow: 'span 2 / span 2',
-    gridColumnStart: 4,
-  },
-  div3: {
-    gridRow: 'span 2 / span 2',
-    gridColumnStart: 4,
-    gridRowStart: 3,
-  },
-  div4: {
-    gridRow: 'span 2 / span 2',
-    gridColumnStart: 5,
-    gridRowStart: 1,
-  },
-  div5: {
-    gridRow: 'span 2 / span 2',
-    gridColumnStart: 5,
-    gridRowStart: 3,
-  },
-};
-
 const Gallery = () => {
   useEffect(() => {
     document.title = 'Gallery';
   }, []);
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', p: 4 }}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        p: 4,
+        maxWidth: '1200px',    // limit max width for big screens
+        mx: 'auto',            // center horizontally
+        gap: 4,                // vertical spacing between children
+      }}
+    >
       <Typography
         variant="h4"
         align="center"
-        sx={{ fontWeight: 'bold', color: 'green', mb: 4 }}
+        sx={{ fontWeight: 'bold', color: 'green' }}
       >
         Gallery
       </Typography>
 
-      <Box style={styles.parent}>
-        <Box style={styles.div1}>
-          <img src={poster} alt="Poster" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: {
+            xs: 'repeat(1, 1fr)',   // 1 column on extra small screens
+            sm: 'repeat(2, 1fr)',   // 2 columns on small screens
+            md: 'repeat(5, 1fr)',   // 5 columns on medium and above
+          },
+          gridAutoRows: '180px',
+          gap: 2,                  // a bit bigger gap between grid items
+          width: { xs: '95%', md: '100%' }, // full width inside maxWidth container
+        }}
+      >
+        <Box
+          sx={{
+            gridColumn: { xs: 'span 1', md: 'span 3' },
+            gridRow: { xs: 'auto', md: 'span 5' },
+            overflow: 'hidden',
+            borderRadius: 2,
+          }}
+        >
+          <img
+            src={poster}
+            alt="Poster"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+          />
         </Box>
-        <Box style={styles.div2}>
-          <img src={poster1} alt="Poster 1" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+
+        <Box
+          sx={{
+            gridColumn: { xs: 'span 1', md: 'span 1' },
+            gridRow: { xs: 'auto', md: 'span 2' },
+            overflow: 'hidden',
+            borderRadius: 2,
+          }}
+        >
+          <img
+            src={poster1}
+            alt="Poster 1"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+          />
         </Box>
-        <Box style={styles.div3}>
-          <img src={poster2} alt="Poster 2" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+
+        <Box
+          sx={{
+            gridColumn: { xs: 'span 1', md: 'span 1' },
+            gridRow: { xs: 'auto', md: 'span 2' },
+            overflow: 'hidden',
+            borderRadius: 2,
+          }}
+        >
+          <img
+            src={poster2}
+            alt="Poster 2"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+          />
         </Box>
-        <Box style={styles.div4}>
-          <img src={poster1} alt="Poster 1" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+
+        <Box
+          sx={{
+            gridColumn: { xs: 'span 1', md: 'span 1' },
+            gridRow: { xs: 'auto', md: 'span 2' },
+            overflow: 'hidden',
+            borderRadius: 2,
+          }}
+        >
+          <img
+            src={poster1}
+            alt="Poster 1"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+          />
         </Box>
-        <Box style={styles.div5}>
-          <img src={poster2} alt="Poster 2" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+
+        <Box
+          sx={{
+            gridColumn: { xs: 'span 1', md: 'span 1' },
+            gridRow: { xs: 'auto', md: 'span 2' },
+            overflow: 'hidden',
+            borderRadius: 2,
+          }}
+        >
+          <img
+            src={poster2}
+            alt="Poster 2"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+          />
         </Box>
       </Box>
 
       <Button
         sx={{
-          ml:80,
           bgcolor: 'black',
           color: 'white',
           px: 4,

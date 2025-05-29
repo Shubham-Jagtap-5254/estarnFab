@@ -28,8 +28,9 @@ const Imgallery = () => {
   const navigate = useNavigate();
 
   return (
-    <Box sx={{ p: 4 }}>
-      <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
+    <Box sx={{ p: { xs: 2, md: 4 } }}>
+      {/* Back Button */}
+      <Box sx={{ display: 'flex', justifyContent: 'center', mb: { xs: 2, md: 4 } }}>
         <Button
           variant="outlined"
           onClick={() => navigate('/')}
@@ -49,20 +50,26 @@ const Imgallery = () => {
         </Button>
       </Box>
 
+      {/* Title */}
       <Typography
         variant="h4"
         align="center"
-        sx={{ fontWeight: 'bold', color: 'green', mb: 4 }}
+        sx={{ fontWeight: 'bold', color: 'green', mb: { xs: 2, md: 4 } }}
       >
         Gallery
       </Typography>
 
+      {/* Image Grid */}
       <Box
         sx={{
           display: 'grid',
-          gridTemplateColumns: { xs: 'repeat(2, 1fr)', sm: 'repeat(3, 1fr)', md: 'repeat(4, 1fr)' },
-          gap: 2,
-          maxWidth: '1200px',
+          gridTemplateColumns: {
+            xs: 'repeat(2, 1fr)',
+            sm: 'repeat(3, 1fr)',
+            md: 'repeat(4, 1fr)',
+          },
+          gap: { xs: 1.5, md: 2 },
+          maxWidth: '1300px',
           mx: 'auto',
         }}
       >
@@ -75,10 +82,15 @@ const Imgallery = () => {
               alt={`Gallery image ${index + 1}`}
               sx={{
                 width: '100%',
-                height: 200,
+                height: { xs: 140, sm: 180, md: 220 },
                 objectFit: 'cover',
                 borderRadius: 2,
                 boxShadow: 3,
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                ':hover': {
+                  transform: 'scale(1.03)',
+                  boxShadow: 6,
+                },
               }}
             />
           ) : (

@@ -12,8 +12,9 @@ const WorkSection = ({ reverse, image, title, description, extraText }) => (
       flexDirection: { xs: 'column', md: reverse ? 'row-reverse' : 'row' },
       alignItems: 'center',
       justifyContent: 'center',
-      gap: 3,
+      gap: { xs: 2, md: 4 },
       width: '100%',
+      px: { xs: 2, md: 0 },
     }}
   >
     <Box
@@ -24,13 +25,13 @@ const WorkSection = ({ reverse, image, title, description, extraText }) => (
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        textAlign: 'left',
+        textAlign: { xs: 'center', md: 'left' },
       }}
     >
       <Typography
         sx={{
           fontWeight: 'bold',
-          fontSize: { xs: '22px', md: '30px' },
+          fontSize: { xs: '20px', sm: '24px', md: '30px' },
           color: 'black',
           mb: 2,
         }}
@@ -41,7 +42,7 @@ const WorkSection = ({ reverse, image, title, description, extraText }) => (
         sx={{
           color: 'black',
           mb: 2,
-          fontSize: { xs: '14px', md: '16px' },
+          fontSize: { xs: '14px', sm: '15px', md: '16px' },
           lineHeight: 1.6,
         }}
       >
@@ -50,7 +51,7 @@ const WorkSection = ({ reverse, image, title, description, extraText }) => (
       <Typography
         sx={{
           color: 'black',
-          fontSize: { xs: '14px', md: '16px' },
+          fontSize: { xs: '14px', sm: '15px', md: '16px' },
           lineHeight: 1.6,
         }}
       >
@@ -61,11 +62,12 @@ const WorkSection = ({ reverse, image, title, description, extraText }) => (
     <Box
       sx={{
         width: { xs: '100%', md: '50%' },
-        height: { xs: '150px', sm: '180px', md: '300px' },
+        height: { xs: 180, sm: 220, md: 300 },
+        borderRadius: 2,
         backgroundImage: `url(${image})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        borderRadius: '8px',
+        boxShadow: 3,
       }}
     />
   </Box>
@@ -82,9 +84,11 @@ const Workdone = () => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        mt: '20px',
+        mt: { xs: 3, md: 5 },
         p: { xs: 2, md: 4 },
-        gap: 6,
+        gap: { xs: 4, md: 6 },
+        maxWidth: 1200,
+        mx: 'auto',
       }}
     >
       <Typography
@@ -92,8 +96,8 @@ const Workdone = () => {
         align="center"
         sx={{
           fontWeight: 'bold',
-          mb: 4,
-          fontSize: { xs: '28px', md: '34px' },
+          mb: { xs: 3, md: 4 },
+          fontSize: { xs: '26px', sm: '30px', md: '34px' },
           transition: 'all 0.3s ease',
           '&:hover': {
             color: 'green',
@@ -131,12 +135,17 @@ const Workdone = () => {
         variant="contained"
         onClick={() => navigate('/')}
         sx={{
+          mt: { xs: 3, md: 4 },
           mb: 2,
-          left: '50%',
-          transform: 'translateX(-50%)',
-          mt: 4,
+          px: { xs: 3, sm: 4 },
+          py: { xs: 1.5, sm: 2 },
           bgcolor: 'black',
           color: 'white',
+          alignSelf: 'center',
+          fontSize: { xs: '0.9rem', sm: '1rem' },
+          '&:hover': {
+            bgcolor: 'grey.800',
+          },
         }}
       >
         Back to Home

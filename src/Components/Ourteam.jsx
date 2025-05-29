@@ -5,37 +5,37 @@ import poster1 from '../assets/poster1.webp'
 const reviewsData = [
   {
     id: 1,
-    name: ' ',
+    name: 'John Doe',
     title: 'CEO',
-    description: '',
+    description: 'Leading our company to success with innovation and passion.',
     avatarUrl: poster1,
   },
   {
     id: 2,
-    name: '',
-    title: 'partner',
-    description: '',
+    name: 'Jane Smith',
+    title: 'Partner',
+    description: 'Committed to delivering excellence in every project.',
     avatarUrl: poster1,
   },
   {
     id: 3,
-    name: '',
-    title: 'partner',
-    description: '',
+    name: 'Michael Brown',
+    title: 'Partner',
+    description: 'Focused on building strong relationships with clients.',
     avatarUrl: poster1,
   },
   {
     id: 4,
-    name: '',
-    title: 'partner',
-    description: '',
+    name: 'Emily Johnson',
+    title: 'Partner',
+    description: 'Driving growth with strategic vision and teamwork.',
     avatarUrl: poster1,
   },
 ]
 
 const Reviews = () => {
   return (
-    <Box id="ourteam" p={2}>
+    <Box id="ourteam" p={{ xs: 2, sm: 4, md: 6 }}>
       <Typography
         variant="h4"
         align="center"
@@ -45,6 +45,7 @@ const Reviews = () => {
           '&:hover': {
             color: 'green',
           },
+          mb: { xs: 3, sm: 4 },
         }}
       >
         Our Team
@@ -53,55 +54,53 @@ const Reviews = () => {
       <Box
         sx={{
           display: 'flex',
-          flexWrap: 'nowrap',
-          justifyContent: 'flex-start',
-          padding: 2,
-          gap: 2,
-          flexDirection: { xs: 'column', sm: 'row' },
-          overflowX: { xs: 'visible', sm: 'auto' },
+          flexWrap: { xs: 'nowrap', sm: 'wrap' },
+          overflowX: { xs: 'auto', sm: 'visible' },
+          gap: { xs: 2, sm: 3, md: 4 },
+          pb: { xs: 2, sm: 0 },
         }}
       >
         {reviewsData.map((review) => (
           <Box
             key={review.id}
             sx={{
-              flex: {
-                xs: '1 1 100%',
-                sm: '1 1 calc(33.33% - 16px)',
-              },
+              flex: { xs: '0 0 80%', sm: '1 1 calc(50% - 24px)', md: '1 1 calc(25% - 32px)' },
               border: '1px solid #ccc',
               borderRadius: 2,
-              padding: { xs: 1, sm: 2 },
+              padding: { xs: 2, sm: 3 },
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
               textAlign: 'center',
               boxShadow: 1,
               backgroundColor: '#fafafa',
+              scrollSnapAlign: 'start',
+              minWidth: { xs: '80%', sm: 'auto' },
             }}
           >
             {review.avatarUrl && (
               <Box
                 component="img"
                 src={review.avatarUrl}
-                alt={review.name}
+                alt={review.name || 'Team Member'}
                 sx={{
                   width: '100%',
-                  height: { xs: 120, sm: 150, md: 180 },
+                  maxWidth: 200,
+                  height: { xs: 140, sm: 160, md: 180 },
                   objectFit: 'cover',
                   borderRadius: 1,
-                  mb: 1,
+                  mb: 2,
                 }}
               />
             )}
-            <Typography variant="body2" color="text.secondary">
-              {review.description}
+            <Typography variant="body2" color="text.secondary" sx={{ minHeight: 60 }}>
+              {review.description || 'No description available.'}
             </Typography>
-            <Typography variant="h6" gutterBottom sx={{ mt: 1 }}>
-              {review.title}
+            <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
+              {review.title || 'Title'}
             </Typography>
             <Typography variant="subtitle2" sx={{ fontWeight: 'bold' }}>
-              - {review.name}
+              - {review.name || 'Name'}
             </Typography>
           </Box>
         ))}

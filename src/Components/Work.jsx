@@ -1,6 +1,5 @@
 import React from 'react'
-import { Paper, Button, Typography } from '@mui/material'
-import { Box } from '@mui/material'
+import { Paper, Button, Typography, Box } from '@mui/material'
 
 const Work = () => {
   const workItems = [
@@ -36,26 +35,49 @@ const Work = () => {
 
   return (
     <>
-      <Box id="work" py={4}>
-        <Typography letterSpacing={1} align="center" variant="h3" sx={{ color: 'black', mb: 1 }}>
+      <Box id="work" py={{ xs: 4, sm: 6 }}>
+        <Typography
+          letterSpacing={1}
+          align="center"
+          variant="h3"
+          sx={{
+            color: 'black',
+            mb: 1,
+            fontSize: { xs: '2rem', sm: '2.75rem', md: '3rem' },
+            px: 2,
+          }}
+        >
           Work done
         </Typography>
-        <Typography letterSpacing={1} align="center" variant="h6" fontStyle={'italic'} sx={{ color: 'grey' }}>
+        <Typography
+          letterSpacing={1}
+          align="center"
+          variant="h6"
+          fontStyle="italic"
+          sx={{
+            color: 'grey',
+            fontSize: { xs: '1rem', sm: '1.25rem' },
+            px: 2,
+          }}
+        >
           Work Done By Our Team Members
         </Typography>
       </Box>
 
       <Box
         sx={{
-          width: '80%',
+          maxWidth: 1200,
+          mx: 'auto',
           display: 'grid',
-          alignItems:'center',
-          ml:'10%',
-          gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
-          gap: 4,
-          justifyContent: 'center',
-          py: 4,
-          px: 2,
+          gridTemplateColumns: {
+            xs: '1fr',
+            sm: '1fr 1fr',
+            md: '1fr 1fr 1fr',
+            lg: 'repeat(4, 1fr)',
+          },
+          gap: { xs: 3, sm: 4, md: 5 },
+          px: { xs: 2, sm: 3, md: 0 },
+          py: { xs: 3, sm: 5 },
         }}
       >
         {workItems.map(({ title, date, description, imgSrc, imgAlt }, index) => (
@@ -65,20 +87,21 @@ const Work = () => {
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              width: { xs: '90%', sm: '100%' },
-              height: 500,
               alignItems: 'center',
-              justifyContent: 'center',
-              p: 3,
+              justifyContent: 'flex-start',
+              p: { xs: 2, sm: 3 },
               backgroundColor: 'white',
               color: 'black',
               boxShadow: 3,
+              height: '100%', // full height for consistent cards
+              minHeight: 500,
+              borderRadius: 2,
             }}
           >
             <Box
               sx={{
-                width: '100',
-                height: 300,
+                width: '100%',
+                height: { xs: 200, sm: 250, md: 280 },
                 borderRadius: 2,
                 overflow: 'hidden',
                 boxShadow: 3,
@@ -88,23 +111,56 @@ const Work = () => {
                 mb: 2,
               }}
             >
-              <img src={imgSrc} alt={imgAlt} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
+              <img
+                src={imgSrc}
+                alt={imgAlt}
+                style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+              />
             </Box>
             <Box sx={{ width: '100%' }}>
-              <Typography sx={{ fontWeight: 'bold', fontSize: { xs: '20px', sm: '24px' }, mb: 1 }}>{title}</Typography>
-              <Typography sx={{ fontStyle: 'italic', fontSize: { xs: '16px', sm: '18px' }, mb: 1, color: 'grey' }}>{date}</Typography>
-              <Typography sx={{ fontSize: { xs: '16px', sm: '18px' }, mb: 3 }}>{description}</Typography>
+              <Typography
+                sx={{
+                  fontWeight: 'bold',
+                  fontSize: { xs: '18px', sm: '22px' },
+                  mb: 1,
+                  textAlign: 'center',
+                }}
+              >
+                {title || '\u00A0' /* non-breaking space if empty */}
+              </Typography>
+              <Typography
+                sx={{
+                  fontStyle: 'italic',
+                  fontSize: { xs: '14px', sm: '16px' },
+                  mb: 1,
+                  color: 'grey',
+                  textAlign: 'center',
+                }}
+              >
+                {date || '\u00A0'}
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: { xs: '14px', sm: '16px' },
+                  mb: 3,
+                  textAlign: 'center',
+                  minHeight: '3rem',
+                }}
+              >
+                {description || '\u00A0'}
+              </Typography>
             </Box>
             <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
               <Button
-                 onClick={() => window.open('/Workdone', '_blank')}
+                onClick={() => window.open('/Workdone', '_blank')}
                 variant="contained"
                 sx={{
                   backgroundColor: 'black',
                   color: 'white',
                   '&:hover': { backgroundColor: 'grey' },
-                  
-
+                  px: 4,
+                  py: 1.5,
+                  fontSize: { xs: '0.85rem', sm: '1rem' },
                 }}
               >
                 See More

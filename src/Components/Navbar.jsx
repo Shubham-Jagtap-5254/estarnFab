@@ -65,15 +65,25 @@ const Navbar = () => {
     >
       <Box
         onClick={toggleDrawer}
-        sx={{ textAlign: 'center', bgcolor: 'black', color: 'white', height: '100%' }}
+        sx={{
+          textAlign: 'center',
+          bgcolor: 'black',
+          color: 'white',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
       >
-        <Typography variant="h6" sx={{ my: 2 }}>
+        <Typography variant="h6" sx={{ my: 3 }}>
           Menu
         </Typography>
         <List>
           {menuItems.map((item) => (
             <ListItem button key={item} onClick={() => handleScroll(item)}>
-              <ListItemText primary={item} />
+              <ListItemText
+                primary={item}
+                sx={{ textAlign: 'center' }}
+              />
             </ListItem>
           ))}
         </List>
@@ -91,11 +101,21 @@ const Navbar = () => {
         style={{ width: '100%', position: 'fixed', zIndex: 1300 }}
       >
         <AppBar position="fixed" sx={{ bgcolor: 'black' }}>
-          <Toolbar sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
+          <Toolbar
+            sx={{
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              px: { xs: 2, sm: 3, md: 5 },
+            }}
+          >
             <img
               src="logo1.png"
               alt="logo"
-              style={{ height: '65px', width: '150px', borderRadius: '0', cursor: 'pointer' }}
+              style={{
+                height: isMobile ? '50px' : '65px',
+                width: isMobile ? '120px' : '150px',
+                cursor: 'pointer',
+              }}
               onClick={() => handleScroll('Home')}
             />
 
@@ -104,21 +124,24 @@ const Navbar = () => {
                 color="inherit"
                 edge="end"
                 onClick={toggleDrawer}
-                sx={{ ml: 2 }}
               >
                 <MenuIcon />
               </IconButton>
             ) : (
-              <Box sx={{ display: 'flex', gap: 5, alignItems: 'center' }}>
-                {menuItems.map((item, index) => (
+              <Box sx={{ display: 'flex', gap: { md: 3, lg: 5 }, alignItems: 'center' }}>
+                {menuItems.map((item) => (
                   <motion.div
                     key={item}
-                    whileHover={{ scale: 1.1 }}
+                    whileHover={{ scale: 1.05 }}
                     transition={{ type: 'spring', stiffness: 300 }}
                   >
                     <Typography
                       className="hover-underline"
-                      sx={{ cursor: 'pointer' }}
+                      sx={{
+                        cursor: 'pointer',
+                        fontSize: { md: '1rem', lg: '1.1rem' },
+                        fontWeight: 400,
+                      }}
                       onClick={() => handleScroll(item)}
                     >
                       {item}
@@ -140,6 +163,8 @@ const Navbar = () => {
           display: { xs: 'block', md: 'none' },
           '& .MuiDrawer-paper': {
             width: drawerWidth,
+            bgcolor: 'black',
+            color: 'white',
             boxSizing: 'border-box',
           },
         }}
