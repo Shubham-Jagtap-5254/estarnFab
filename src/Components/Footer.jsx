@@ -36,8 +36,9 @@ const Footer = () => {
         boxShadow: '0 0 15px rgba(0,0,0,0.8)',
         fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
         fontSize: 13,
-        pt: { xs: 4, sm: 5 },
-        pb: { xs: 3, sm: 4 },
+        pt: { xs: 8, sm: 10 },
+        pb: { xs: 6, sm: 8 },
+        minHeight: { xs: 'auto',mt:'100px', md: '350px' },
       }}
     >
       <Box
@@ -48,7 +49,7 @@ const Footer = () => {
           flexDirection: { xs: 'column', md: 'row' },
           justifyContent: 'space-between',
           alignItems: { xs: 'center', md: 'flex-start' },
-          gap: { xs: 3, md: 4 },
+          gap: { xs: 5, md: 6 },
           flexWrap: 'wrap',
           px: { xs: 2, md: 3 },
         }}
@@ -62,7 +63,7 @@ const Footer = () => {
             pr: { md: 2 },
             display: 'flex',
             flexDirection: 'column',
-            gap: 1.5,
+            gap: 2,
             textAlign: { xs: 'center', md: 'left' },
           }}
         >
@@ -78,7 +79,7 @@ const Footer = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: { xs: 'center', md: 'flex-start' },
-                  mb: 0.5,
+                  mb: 0.75,
                 }}
               >
                 <CallIcon
@@ -147,7 +148,7 @@ const Footer = () => {
             px: { md: 2 },
             display: 'flex',
             flexDirection: 'column',
-            gap: 2,
+            gap: 2.5,
             textAlign: { xs: 'center', md: 'left' },
             justifyContent: 'center',
           }}
@@ -160,7 +161,7 @@ const Footer = () => {
             sx={{
               display: 'flex',
               flexWrap: 'wrap',
-              gap: 1.5,
+              gap: 1.75,
               justifyContent: { xs: 'center', md: 'flex-start' },
               fontSize: 13,
               fontWeight: '600',
@@ -208,14 +209,14 @@ const Footer = () => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            gap: 2,
+            gap: 2.5,
             textAlign: 'center',
           }}
         >
           <Box
             sx={{
               width: '100%',
-              height: { xs: 120, sm: 140, md: 130 },
+              height: { xs: 150, sm: 170, md: 160 },
               backgroundImage: `url(${banner})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
@@ -224,7 +225,7 @@ const Footer = () => {
               border: '2px solid #00ffea',
             }}
           />
-          <Box sx={{ display: 'flex', gap: 1.5 }}>
+          <Box sx={{ display: 'flex', gap: 1.75 }}>
             {socialLinks.map(({ icon: Icon, url }, i) => (
               <IconButton
                 key={i}
