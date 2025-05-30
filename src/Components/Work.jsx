@@ -5,29 +5,25 @@ const Work = () => {
   const workItems = [
     {
       title: '',
-      date: '',
-      description: '.',
+      description: 'We, ‘EasternFab Group’ fabricate structures, Pressure Vessels, Tanks, Air Pollution Equipment, Industrial Fans, Silos, Custom items as per client requirements. Both heavy and light equipment projects are handled.',
       imgSrc: '/src/assets/poster2.webp',
       imgAlt: 'Image 1',
     },
     {
       title: '',
-      date: '',
-      description: '',
+      description: 'EasternFab Group specializes in Air Pollution Control Equipment, Industrial Fans, and customized fabrication services tailored for client-specific needs.Additional text can be added here in front of the image as requested.',
       imgSrc: '/src/assets/poster2.webp',
       imgAlt: 'Image 1',
     },
     {
       title: '',
-      date: '',
-      description: '',
+      description: 'Our expert team handles complex fabrication work, Pressure Vessels, customized Silos, and industrial machinery fabrication, ensuring quality and durability.',
       imgSrc: '/src/assets/poster.webp',
       imgAlt: 'Image 2',
     },
     {
       title: '',
-      date: '',
-      description: '',
+       description: 'We are backed by a well-organized infrastructure that helps us in the fabrication of our exceptional range of products.',
       imgSrc: '/src/assets/poster1.webp',
       imgAlt: 'Image 3',
     },
@@ -126,7 +122,7 @@ const Work = () => {
                   textAlign: 'center',
                 }}
               >
-                {title || '\u00A0' /* non-breaking space if empty */}
+                {title || '\u00A0' }
               </Typography>
               <Typography
                 sx={{
