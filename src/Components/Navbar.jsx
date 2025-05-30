@@ -31,7 +31,7 @@ const menuItems = [
 const sectionIds = {
   'Home': 'home',
   'About Us': 'about',
-  'Work Done': 'workdone',
+  'Work Done': 'work',
   'Our Team': 'ourteam',
   'Contact Us': 'contact',
   'Reviews': 'reviews',

@@ -9,6 +9,8 @@ const Gallery = () => {
     document.title = 'Gallery';
   }, []);
 
+  const images = [poster, poster1, poster2, poster1, poster2];
+
   return (
     <Box
       sx={{
@@ -16,9 +18,9 @@ const Gallery = () => {
         flexDirection: 'column',
         alignItems: 'center',
         p: 4,
-        maxWidth: '1200px',    // limit max width for big screens
-        mx: 'auto',            // center horizontally
-        gap: 4,                // vertical spacing between children
+        maxWidth: '1200px',
+        mx: 'auto',
+        gap: 4,
       }}
     >
       <Typography
@@ -33,89 +35,37 @@ const Gallery = () => {
         sx={{
           display: 'grid',
           gridTemplateColumns: {
-            xs: 'repeat(1, 1fr)',   // 1 column on extra small screens
-            sm: 'repeat(2, 1fr)',   // 2 columns on small screens
-            md: 'repeat(5, 1fr)',   // 5 columns on medium and above
+            xs: 'repeat(1, 1fr)',
+            sm: 'repeat(2, 1fr)',
+            md: 'repeat(3, 1fr)',
+            lg: 'repeat(5, 1fr)',
           },
-          gridAutoRows: '180px',
-          gap: 2,                  // a bit bigger gap between grid items
-          width: { xs: '95%', md: '100%' }, // full width inside maxWidth container
+          gap: 2,
+          width: '100%',
         }}
       >
-        <Box
-          sx={{
-            gridColumn: { xs: 'span 1', md: 'span 3' },
-            gridRow: { xs: 'auto', md: 'span 5' },
-            overflow: 'hidden',
-            borderRadius: 2,
-          }}
-        >
-          <img
-            src={poster}
-            alt="Poster"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-          />
-        </Box>
-
-        <Box
-          sx={{
-            gridColumn: { xs: 'span 1', md: 'span 1' },
-            gridRow: { xs: 'auto', md: 'span 2' },
-            overflow: 'hidden',
-            borderRadius: 2,
-          }}
-        >
-          <img
-            src={poster1}
-            alt="Poster 1"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-          />
-        </Box>
-
-        <Box
-          sx={{
-            gridColumn: { xs: 'span 1', md: 'span 1' },
-            gridRow: { xs: 'auto', md: 'span 2' },
-            overflow: 'hidden',
-            borderRadius: 2,
-          }}
-        >
-          <img
-            src={poster2}
-            alt="Poster 2"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-          />
-        </Box>
-
-        <Box
-          sx={{
-            gridColumn: { xs: 'span 1', md: 'span 1' },
-            gridRow: { xs: 'auto', md: 'span 2' },
-            overflow: 'hidden',
-            borderRadius: 2,
-          }}
-        >
-          <img
-            src={poster1}
-            alt="Poster 1"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-          />
-        </Box>
-
-        <Box
-          sx={{
-            gridColumn: { xs: 'span 1', md: 'span 1' },
-            gridRow: { xs: 'auto', md: 'span 2' },
-            overflow: 'hidden',
-            borderRadius: 2,
-          }}
-        >
-          <img
-            src={poster2}
-            alt="Poster 2"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-          />
-        </Box>
+        {images.map((imgSrc, index) => (
+          <Box
+            key={index}
+            sx={{
+              overflow: 'hidden',
+              borderRadius: 2,
+              aspectRatio: '1 / 1', // maintain square images
+              '& img': {
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                display: 'block',
+                transition: 'transform 0.3s ease',
+                '&:hover': {
+                  transform: 'scale(1.05)',
+                },
+              },
+            }}
+          >
+            <img src={imgSrc} alt={`Poster ${index + 1}`} />
+          </Box>
+        ))}
       </Box>
 
       <Button
@@ -124,9 +74,10 @@ const Gallery = () => {
           color: 'white',
           px: 4,
           py: 1,
+          mt: 2,
           ':hover': {
             color: 'black',
-            bgcolor: 'grey',
+            bgcolor: 'grey.300',
           },
         }}
         onClick={() => window.open('/imgallery', '_blank')}
