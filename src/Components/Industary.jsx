@@ -66,15 +66,14 @@ const Services = () => {
         solutions ensure optimal performance and productivity for our clients.
       </Typography>
 
-      {/* Grid container with spacing */}
       <Grid container spacing={{ xs: 3, md: 4 }} justifyContent="center">
         {industries.map(({ title, description, icon }) => (
           <Grid
             item
             key={title}
-            xs={12}   // full width on xs screens (mobile)
-            sm={6}    // half width on small screens (tablets)
-            md={4}    // one-third width on medium+ screens (desktop)
+            xs={12}   
+            sm={6}   
+            md={4}    
           >
             <motion.div
               variants={cardVariants}
@@ -119,4 +118,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default Services;   
